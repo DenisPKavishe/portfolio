@@ -13,7 +13,7 @@ import { frontendTechStack, frontendProjects, frontendExperience, frontendEducat
 export default function FrontendPage() {
   const [mounted, setMounted] = useState(false)
   const accentColor = '#6B1D2B'
-  const email = 'zooperk2g@gmail.com'
+  const email = 'kavishedenis55@gmail.com'
   const phone = '+255748920929'
   const location = 'Arusha, Tanzania'
 

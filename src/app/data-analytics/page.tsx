@@ -14,7 +14,7 @@ export default function DataAnalyticsPage() {
   const [mounted, setMounted] = useState(false)
   const [showCertifications, setShowCertifications] = useState(false)
   const accentColor = '#059669'
-  const email = 'zooperk2g@gmail.com'
+  const email = 'kavishedenis55@gmail.com'
   const phone = '+255748920929'
   const location = 'Arusha, Tanzania'
 

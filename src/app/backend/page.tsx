@@ -13,7 +13,7 @@ import { backendTechStack, backendProjects, backendExperience, backendEducation,
 export default function BackendPage() {
   const [mounted, setMounted] = useState(false)
   const accentColor = '#0F4C81'
-  const email = 'zooperk2g@gmail.com'
+  const email = 'kavishedenis55@gmail.com'
   const phone = '+255748920929'
   const location = 'Arusha, Tanzania'
 

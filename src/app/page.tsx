@@ -471,7 +471,7 @@ export default function Home() {
       <div className="container">
         <div className="hero">
           <div className="badge">✦ PORTFOLIO HUB ✦</div>
-          <h1>Denis <span className="highlight">Kavishe</span><br />Multi‑Disciplinary Developer</h1>
+          <h1>Denis <span className="highlight">Kavishe</span><br />Software Developer</h1>
           <p className="hero-desc">Explore my work across frontend engineering, backend architecture, and data analytics. Each portfolio showcases specialized skills, projects, and professional journey.</p>
           <div className="hero-stats">
             <div className="stat"><div className="stat-number">4+</div><div className="stat-label">Years Exp</div></div>
@@ -545,9 +545,9 @@ export default function Home() {
           <h3>👋 About Me</h3>
           <p>I'm Denis Kavishe, a versatile technologist based in Arusha, Tanzania. With a strong foundation in computer science and hands-on experience at e-Government Authority (e-GA), KH MMBAGA, and God's Plan Charity, I deliver high-quality solutions across the full technology spectrum. Whether it's building dynamic frontends, robust backends, or data-driven insights, I bring precision, creativity, and reliability to every project.</p>
           <div className="quick-contact">
-            <a href="mailto:zooperk2g@gmail.com" className="contact-chip">
+            <a href="mailto:kavishedenis55@gmail.com" className="contact-chip">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              zooperk2g@gmail.com
+              kavishedenis55@gmail.com
             </a>
             <a href="https://wa.me/255748920929" className="contact-chip">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>

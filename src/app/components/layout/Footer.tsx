@@ -37,7 +37,7 @@ export default function Footer({ variant = 'frontend' }: FooterProps) {
             </h3>
             <p>{getTitle()}</p>
             <div className="footer-social">
-              <a href="mailto:zooperk2g@gmail.com">
+              <a href="mailto:kavishedenis55@gmail.com">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                   <polyline points="22,6 12,13 2,6"/>
@@ -68,17 +68,9 @@ export default function Footer({ variant = 'frontend' }: FooterProps) {
               <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
-          <div className="footer-newsletter">
-            <h4>Stack Focus</h4>
-            <p>{variant === 'frontend' ? 'React • Next.js • TypeScript • Tailwind' : variant === 'backend' ? 'Django • DRF • Celery • Redis • PostgreSQL' : 'Excel • Python • SQL • Power BI • Tableau'}</p>
-            <div className="newsletter-input">
-              <input type="email" placeholder="Your email" />
-              <button style={{ backgroundColor: accentColor }}>→</button>
-            </div>
-          </div>
         </div>
         <div className="footer-bottom">
-          <p>© 2026 Denis Kavishe — {variant === 'frontend' ? 'Frontend Developer' : variant === 'backend' ? 'Backend Developer' : 'Data Analyst'}. Crafted with <span className="footer-heart">♥</span> in Arusha, Tanzania</p>
+          <p>© 2026 Denis Kavishe</p>
         </div>
       </div>
 
