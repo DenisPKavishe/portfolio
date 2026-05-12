@@ -11,12 +11,21 @@ import FloatingCVButton from '../components/ui/FloatingCVButton'
 import { dataTechStack, dataProjects, certifications, dataExperience, dataEducation, dataStats } from '../data/dataAnalyticsData'
 
 export default function DataAnalyticsPage() {
+  const [mounted, setMounted] = useState(false)
+  const [showCertifications, setShowCertifications] = useState(false)
   const accentColor = '#059669'
   const email = 'zooperk2g@gmail.com'
   const phone = '+255748920929'
   const location = 'Arusha, Tanzania'
 
   useEffect(() => {
+    setMounted(true)
+    
+    // Force show certifications after mount
+    setTimeout(() => {
+      setShowCertifications(true)
+    }, 100)
+    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -32,6 +41,38 @@ export default function DataAnalyticsPage() {
 
     return () => observer.disconnect()
   }, [])
+
+  // Don't render until mounted to prevent FOUC
+  if (!mounted) {
+    return (
+      <div style={{ 
+        minHeight: '100vh', 
+        background: 'linear-gradient(135deg, #f5f5f7 0%, #e8e8ec 100%)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: 'system-ui, -apple-system, sans-serif'
+      }}>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ 
+            width: '40px', 
+            height: '40px', 
+            border: '3px solid #e5e7eb', 
+            borderTopColor: accentColor, 
+            borderRadius: '50%', 
+            animation: 'spin 1s linear infinite',
+            margin: '0 auto 16px'
+          }} />
+          <style>{`
+            @keyframes spin {
+              to { transform: rotate(360deg); }
+            }
+          `}</style>
+          <p style={{ color: '#6b7280' }}>Loading Data Analytics Portfolio...</p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="data-page">
@@ -96,12 +137,6 @@ export default function DataAnalyticsPage() {
           overflow: hidden;
           border: 1px solid #e5e7eb;
           transition: all 0.3s ease;
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        .cert-card.visible {
-          opacity: 1;
-          transform: translateY(0);
         }
         .cert-card:hover {
           transform: translateY(-8px);
@@ -188,6 +223,21 @@ export default function DataAnalyticsPage() {
           font-weight: 600;
           padding: 4px 12px;
           border-radius: 20px;
+        }
+        .verify-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          margin-top: 16px;
+          font-size: 12px;
+          color: ${accentColor};
+          text-decoration: none;
+          font-weight: 600;
+          transition: all 0.3s ease;
+        }
+        .verify-link:hover {
+          gap: 12px;
+          color: #047857;
         }
         .about-section {
           background: linear-gradient(135deg, white 0%, #ecfdf5 100%);
@@ -309,6 +359,23 @@ export default function DataAnalyticsPage() {
           .cert-grid {
             grid-template-columns: 1fr;
           }
+          .portfolio-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+        @media (max-width: 480px) {
+          .section, .section-alt {
+            padding: 40px 16px;
+          }
+          .about-section {
+            padding: 40px 16px;
+          }
+          .about-right {
+            padding: 20px;
+          }
+          .cert-content {
+            padding: 16px;
+          }
         }
       `}</style>
 
@@ -354,7 +421,7 @@ export default function DataAnalyticsPage() {
           <h2 className="section-title">Excel • Python • SQL • Visualization</h2>
         </div>
         <div className="tech-grid">
-          {dataTechStack.map((tech, index) => (
+          {dataTechStack && dataTechStack.map((tech, index) => (
             <TechCard key={index} icon={tech.icon} name={tech.name} accentColor={accentColor} />
           ))}
         </div>
@@ -367,13 +434,14 @@ export default function DataAnalyticsPage() {
             <h2 className="section-title">Featured Projects</h2>
           </div>
           <div className="portfolio-grid">
-            {dataProjects.map(project => (
+            {dataProjects && dataProjects.map(project => (
               <PortfolioCard key={project.id} project={project} accentColor={accentColor} isData />
             ))}
           </div>
         </div>
       </section>
 
+      {/* Certifications Section - Simplified without opacity animation */}
       <section className="section" id="certifications">
         <div className="section-header">
           <div className="section-label">Professional Credentials</div>
@@ -381,29 +449,54 @@ export default function DataAnalyticsPage() {
           <p style={{ color: '#6b7280', maxWidth: '600px', margin: '16px auto 0' }}>Industry-recognized certifications that validate my expertise in data analytics and visualization.</p>
         </div>
         <div className="cert-grid">
-          {certifications.map((cert) => (
-            <div key={cert.id} className="cert-card">
+          {certifications && certifications.map((cert) => (
+            <div key={cert.id} className="cert-card" style={{ opacity: 1, transform: 'translateY(0)' }}>
               <div className="cert-image">
                 <svg className="cert-icon-svg" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
                   <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
                   <circle cx="12" cy="12" r="3"/>
                 </svg>
                 <span className="cert-badge">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
                   Verified
                 </span>
               </div>
               <div className="cert-content">
                 <h3 className="cert-title">{cert.title}</h3>
-                <div className="cert-issuer">{cert.issuer}</div>
-                <div className="cert-date">{cert.date}</div>
+                <div className="cert-issuer">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                  </svg>
+                  {cert.issuer}
+                </div>
+                <div className="cert-date">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  {cert.date}
+                </div>
                 <div className="cert-credential">{cert.credentialId}</div>
-                <p style={{ fontSize: '13px', color: '#6b7280', marginBottom: '12px' }}>{cert.description}</p>
+                {cert.description && (
+                  <p style={{ fontSize: '13px', color: '#6b7280', marginBottom: '12px' }}>{cert.description}</p>
+                )}
                 <div className="cert-skills">
-                  {cert.skills.map(skill => (
+                  {cert.skills && cert.skills.map(skill => (
                     <span key={skill} className="cert-skill">{skill}</span>
                   ))}
                 </div>
+                <a href="#" className="verify-link">
+                  Verify Credential 
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </a>
               </div>
             </div>
           ))}

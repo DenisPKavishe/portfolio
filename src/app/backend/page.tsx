@@ -11,12 +11,15 @@ import FloatingCVButton from '../components/ui/FloatingCVButton'
 import { backendTechStack, backendProjects, backendExperience, backendEducation, backendStats } from '../data/backendData'
 
 export default function BackendPage() {
+  const [mounted, setMounted] = useState(false)
   const accentColor = '#0F4C81'
   const email = 'zooperk2g@gmail.com'
   const phone = '+255748920929'
   const location = 'Arusha, Tanzania'
 
   useEffect(() => {
+    setMounted(true)
+    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -32,6 +35,38 @@ export default function BackendPage() {
 
     return () => observer.disconnect()
   }, [])
+
+  // Don't render until mounted to prevent FOUC
+  if (!mounted) {
+    return (
+      <div style={{ 
+        minHeight: '100vh', 
+        background: 'linear-gradient(135deg, #f5f5f7 0%, #e8e8ec 100%)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: 'system-ui, -apple-system, sans-serif'
+      }}>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ 
+            width: '40px', 
+            height: '40px', 
+            border: '3px solid #e5e7eb', 
+            borderTopColor: accentColor, 
+            borderRadius: '50%', 
+            animation: 'spin 1s linear infinite',
+            margin: '0 auto 16px'
+          }} />
+          <style>{`
+            @keyframes spin {
+              to { transform: rotate(360deg); }
+            }
+          `}</style>
+          <p style={{ color: '#6b7280' }}>Loading Backend Portfolio...</p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="backend-page">
@@ -199,6 +234,20 @@ export default function BackendPage() {
           }
           .section, .section-alt {
             padding: 60px 20px;
+          }
+          .portfolio-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+        @media (max-width: 480px) {
+          .section, .section-alt {
+            padding: 40px 16px;
+          }
+          .about-section {
+            padding: 40px 16px;
+          }
+          .about-right {
+            padding: 20px;
           }
         }
       `}</style>

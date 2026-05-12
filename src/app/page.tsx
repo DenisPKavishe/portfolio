@@ -1,9 +1,14 @@
 'use client'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 export default function Home() {
+  const [mounted, setMounted] = useState(false)
+
   useEffect(() => {
+    setMounted(true)
+    
+    // Generate animated background particles
     const container = document.getElementById('particles')
     if (container) {
       const particleCount = 80
@@ -15,11 +20,12 @@ export default function Home() {
         span.style.left = Math.random() * 100 + '%'
         span.style.animationDuration = Math.random() * 15 + 10 + 's'
         span.style.animationDelay = Math.random() * 10 + 's'
-        span.style.background = `rgba(59, 130, 246, ${Math.random() * 0.3 + 0.1})`
+        span.style.background = `rgba(59, 130, 246, ${Math.random() * 0.15 + 0.05})`
         container.appendChild(span)
       }
     }
 
+    // Add ripple effect to cards
     const cards = document.querySelectorAll('.role-card')
     cards.forEach(card => {
       card.addEventListener('click', (e) => {
@@ -29,7 +35,7 @@ export default function Home() {
         ripple.style.left = (e as MouseEvent).clientX - card.getBoundingClientRect().left + 'px'
         ripple.style.width = '10px'
         ripple.style.height = '10px'
-        ripple.style.background = 'rgba(255,255,255,0.4)'
+        ripple.style.background = 'rgba(0,0,0,0.1)'
         ripple.style.borderRadius = '50%'
         ripple.style.transform = 'scale(0)'
         ripple.style.transition = 'transform 0.4s ease-out'
@@ -45,6 +51,38 @@ export default function Home() {
     })
   }, [])
 
+  // Don't render until mounted to prevent FOUC
+  if (!mounted) {
+    return (
+      <div style={{ 
+        minHeight: '100vh', 
+        background: 'linear-gradient(135deg, #f5f5f7 0%, #e8e8ec 100%)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: 'system-ui, -apple-system, sans-serif'
+      }}>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ 
+            width: '40px', 
+            height: '40px', 
+            border: '3px solid #e5e7eb', 
+            borderTopColor: '#2563eb', 
+            borderRadius: '50%', 
+            animation: 'spin 1s linear infinite',
+            margin: '0 auto 16px'
+          }} />
+          <style>{`
+            @keyframes spin {
+              to { transform: rotate(360deg); }
+            }
+          `}</style>
+          <p style={{ color: '#6b7280' }}>Loading...</p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="home-page">
       <style jsx global>{`
@@ -56,8 +94,8 @@ export default function Home() {
 
         body {
           font-family: 'Inter', -apple-system, sans-serif;
-          background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-          color: #f1f5f9;
+          background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ec 100%);
+          color: #1a1a2e;
           line-height: 1.6;
           min-height: 100vh;
           overflow-x: hidden;
@@ -76,7 +114,7 @@ export default function Home() {
           position: absolute;
           width: 4px;
           height: 4px;
-          background: rgba(59, 130, 246, 0.3);
+          background: rgba(59, 130, 246, 0.15);
           border-radius: 50%;
           animation: float 20s infinite linear;
         }
@@ -89,58 +127,60 @@ export default function Home() {
 
         .container {
           max-width: 1300px;
+          width: 100%;
           margin: 0 auto;
-          padding: 40px 30px;
+          padding: 40px 20px;
           position: relative;
           z-index: 2;
         }
 
         .hero {
           text-align: center;
-          padding: 80px 20px 60px;
+          padding: 60px 16px 40px;
           animation: fadeInUp 0.8s ease forwards;
         }
         .badge {
           display: inline-block;
-          background: rgba(59, 130, 246, 0.2);
+          background: rgba(59, 130, 246, 0.1);
           backdrop-filter: blur(10px);
-          border: 1px solid rgba(59, 130, 246, 0.4);
-          padding: 8px 20px;
+          border: 1px solid rgba(59, 130, 246, 0.2);
+          padding: 6px 16px;
           border-radius: 60px;
-          font-size: 13px;
+          font-size: 12px;
           font-weight: 600;
           letter-spacing: 1px;
-          color: #60a5fa;
-          margin-bottom: 24px;
+          color: #2563eb;
+          margin-bottom: 20px;
         }
         .hero h1 {
           font-family: 'Poppins', sans-serif;
-          font-size: clamp(42px, 7vw, 72px);
+          font-size: clamp(36px, 7vw, 72px);
           font-weight: 800;
           line-height: 1.2;
-          margin-bottom: 20px;
-          background: linear-gradient(135deg, #ffffff, #94a3b8, #60a5fa);
+          margin-bottom: 16px;
+          background: linear-gradient(135deg, #1a1a2e, #4a4a6a, #2563eb);
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
         }
         .hero h1 .highlight {
-          background: linear-gradient(135deg, #3b82f6, #10b981, #f59e0b);
+          background: linear-gradient(135deg, #2563eb, #10b981, #f59e0b);
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
         }
         .hero-desc {
-          font-size: 18px;
-          color: #cbd5e1;
+          font-size: 16px;
+          color: #4b5563;
           max-width: 700px;
-          margin: 0 auto 32px;
+          margin: 0 auto 24px;
+          padding: 0 16px;
         }
         .hero-stats {
           display: flex;
           justify-content: center;
-          gap: 48px;
-          margin-top: 40px;
+          gap: 32px;
+          margin-top: 32px;
           flex-wrap: wrap;
         }
         .stat {
@@ -148,32 +188,33 @@ export default function Home() {
         }
         .stat-number {
           font-family: 'Poppins', sans-serif;
-          font-size: 32px;
+          font-size: 28px;
           font-weight: 800;
-          background: linear-gradient(135deg, #3b82f6, #10b981);
+          background: linear-gradient(135deg, #2563eb, #10b981);
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
         }
         .stat-label {
-          font-size: 13px;
-          color: #94a3b8;
+          font-size: 12px;
+          color: #6b7280;
           letter-spacing: 1px;
         }
 
         .cards-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-          gap: 32px;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 24px;
           margin: 40px 0;
+          padding: 0;
           animation: fadeInUp 0.8s ease forwards;
         }
         .role-card {
-          background: rgba(30, 41, 59, 0.7);
+          background: rgba(255, 255, 255, 0.9);
           backdrop-filter: blur(16px);
-          border-radius: 32px;
-          padding: 40px 32px;
-          border: 1px solid rgba(71, 85, 105, 0.5);
+          border-radius: 28px;
+          padding: 32px 24px;
+          border: 1px solid rgba(0, 0, 0, 0.08);
           transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
           cursor: pointer;
           text-decoration: none;
@@ -183,6 +224,7 @@ export default function Home() {
           overflow: hidden;
           opacity: 0;
           animation: fadeInUp 0.6s ease forwards;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
         .role-card:nth-child(1) { animation-delay: 0.1s; }
         .role-card:nth-child(2) { animation-delay: 0.2s; }
@@ -195,58 +237,60 @@ export default function Home() {
           left: -100%;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.15), transparent);
+          background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.08), transparent);
           transition: left 0.6s ease;
         }
         .role-card:hover::before {
           left: 100%;
         }
         .role-card:hover {
-          transform: translateY(-12px);
-          border-color: rgba(59, 130, 246, 0.6);
-          box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.5);
+          transform: translateY(-8px);
+          border-color: rgba(59, 130, 246, 0.3);
+          box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
         }
         .card-icon svg {
-          width: 64px;
-          height: 64px;
+          width: 56px;
+          height: 56px;
           stroke-width: 1.5;
-          margin-bottom: 24px;
+          margin-bottom: 20px;
+          stroke: #1a1a2e;
         }
         .role-card h3 {
           font-family: 'Poppins', sans-serif;
-          font-size: 28px;
+          font-size: 24px;
           font-weight: 700;
-          margin-bottom: 16px;
+          margin-bottom: 12px;
+          color: #1a1a2e;
         }
         .role-card p {
-          color: #cbd5e1;
-          font-size: 15px;
-          line-height: 1.7;
-          margin-bottom: 24px;
+          color: #4b5563;
+          font-size: 14px;
+          line-height: 1.6;
+          margin-bottom: 20px;
         }
         .tech-badges {
           display: flex;
           flex-wrap: wrap;
-          gap: 10px;
-          margin-top: 20px;
+          gap: 8px;
+          margin-top: 16px;
         }
         .tech-badge {
-          background: rgba(59, 130, 246, 0.2);
-          padding: 6px 14px;
+          background: rgba(59, 130, 246, 0.1);
+          padding: 4px 10px;
           border-radius: 30px;
-          font-size: 12px;
+          font-size: 11px;
           font-weight: 500;
-          color: #93c5fd;
-          border: 1px solid rgba(59, 130, 246, 0.3);
+          color: #2563eb;
+          border: 1px solid rgba(59, 130, 246, 0.2);
         }
         .arrow-link {
-          margin-top: 28px;
+          margin-top: 20px;
           display: inline-flex;
           align-items: center;
           gap: 8px;
           font-weight: 600;
-          font-size: 14px;
-          color: #60a5fa;
+          font-size: 13px;
+          color: #2563eb;
           transition: gap 0.3s;
         }
         .role-card:hover .arrow-link {
@@ -254,68 +298,76 @@ export default function Home() {
         }
 
         .card-frontend:hover {
-          border-color: #932804;
-          box-shadow: 0 20px 35px -12px rgba(59, 130, 246, 0.3);
+          border-color: #6B1D2B;
+          box-shadow: 0 20px 35px -12px rgba(107, 29, 43, 0.15);
         }
         .card-backend:hover {
-          border-color: #0046dd;
-          box-shadow: 0 20px 35px -12px rgba(16, 185, 129, 0.3);
+          border-color: #0F4C81;
+          box-shadow: 0 20px 35px -12px rgba(15, 76, 129, 0.15);
         }
         .card-data:hover {
-          border-color: #10b981;
-          box-shadow: 0 20px 35px -12px rgba(245, 158, 11, 0.3);
+          border-color: #059669;
+          box-shadow: 0 20px 35px -12px rgba(5, 150, 105, 0.15);
         }
 
         .about-short {
-          background: rgba(15, 23, 42, 0.6);
-          border-radius: 28px;
-          padding: 50px 40px;
-          margin: 60px 0;
-          border: 1px solid rgba(71, 85, 105, 0.4);
+          background: rgba(255, 255, 255, 0.8);
+          border-radius: 24px;
+          padding: 40px 24px;
+          margin: 40px 0;
+          border: 1px solid rgba(0, 0, 0, 0.06);
           backdrop-filter: blur(8px);
           animation: fadeInUp 0.8s ease forwards;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
         .about-short h3 {
-          font-size: 24px;
-          margin-bottom: 20px;
+          font-size: 22px;
+          margin-bottom: 16px;
+          color: #1a1a2e;
         }
         .about-short p {
-          color: #cbd5e1;
-          line-height: 1.8;
+          color: #4b5563;
+          line-height: 1.7;
+          font-size: 15px;
         }
         .quick-contact {
           display: flex;
           justify-content: center;
-          gap: 24px;
-          margin-top: 30px;
+          gap: 16px;
+          margin-top: 24px;
           flex-wrap: wrap;
         }
         .contact-chip {
-          background: rgba(30, 41, 59, 0.8);
-          padding: 10px 24px;
+          background: rgba(255, 255, 255, 0.9);
+          padding: 8px 18px;
           border-radius: 40px;
           display: inline-flex;
           align-items: center;
-          gap: 12px;
-          font-size: 14px;
+          gap: 10px;
+          font-size: 13px;
           text-decoration: none;
-          color: #e2e8f0;
+          color: #1a1a2e;
           transition: all 0.3s;
-          border: 1px solid rgba(71, 85, 105, 0.5);
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
         .contact-chip:hover {
-          background: #3b82f6;
-          border-color: #3b82f6;
+          background: #2563eb;
+          border-color: #2563eb;
+          color: white;
           transform: translateY(-3px);
+        }
+        .contact-chip:hover svg {
+          stroke: white;
         }
 
         .footer {
           text-align: center;
-          padding: 40px 20px;
-          border-top: 1px solid rgba(71, 85, 105, 0.4);
+          padding: 30px 16px;
+          border-top: 1px solid rgba(0, 0, 0, 0.08);
           margin-top: 40px;
-          color: #94a3b8;
-          font-size: 14px;
+          color: #6b7280;
+          font-size: 13px;
         }
 
         @keyframes fadeInUp {
@@ -329,25 +381,87 @@ export default function Home() {
           }
         }
 
+        /* Mobile First Responsive */
         @media (max-width: 768px) {
           .container {
-            padding: 20px;
+            padding: 20px 16px;
           }
           .hero {
-            padding: 60px 20px 40px;
-          }
-          .cards-grid {
-            grid-template-columns: 1fr;
-            gap: 24px;
-          }
-          .role-card {
-            padding: 28px 24px;
-          }
-          .about-short {
-            padding: 30px 24px;
+            padding: 40px 12px 30px;
           }
           .hero-stats {
-            gap: 28px;
+            gap: 24px;
+          }
+          .cards-grid {
+            gap: 20px;
+            margin: 30px 0;
+            grid-template-columns: 1fr;
+          }
+          .role-card {
+            padding: 24px 20px;
+          }
+          .card-icon svg {
+            width: 48px;
+            height: 48px;
+          }
+          .role-card h3 {
+            font-size: 22px;
+          }
+          .about-short {
+            padding: 30px 20px;
+            margin: 30px 0;
+          }
+          .quick-contact {
+            gap: 12px;
+          }
+          .contact-chip {
+            padding: 6px 14px;
+            font-size: 12px;
+          }
+        }
+
+        /* Small phones */
+        @media (max-width: 480px) {
+          .container {
+            padding: 16px 12px;
+          }
+          .hero {
+            padding: 30px 8px 20px;
+          }
+          .hero-title {
+            font-size: 32px;
+          }
+          .hero-desc {
+            font-size: 14px;
+          }
+          .stat-number {
+            font-size: 24px;
+          }
+          .stat-label {
+            font-size: 10px;
+          }
+          .role-card {
+            padding: 20px 16px;
+          }
+          .card-icon svg {
+            width: 40px;
+            height: 40px;
+          }
+          .role-card h3 {
+            font-size: 20px;
+          }
+          .role-card p {
+            font-size: 13px;
+          }
+          .tech-badge {
+            font-size: 10px;
+            padding: 3px 8px;
+          }
+          .about-short h3 {
+            font-size: 20px;
+          }
+          .about-short p {
+            font-size: 14px;
           }
         }
       `}</style>
@@ -432,15 +546,15 @@ export default function Home() {
           <p>I'm Denis Kavishe, a versatile technologist based in Arusha, Tanzania. With a strong foundation in computer science and hands-on experience at e-Government Authority (e-GA), KH MMBAGA, and God's Plan Charity, I deliver high-quality solutions across the full technology spectrum. Whether it's building dynamic frontends, robust backends, or data-driven insights, I bring precision, creativity, and reliability to every project.</p>
           <div className="quick-contact">
             <a href="mailto:zooperk2g@gmail.com" className="contact-chip">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               zooperk2g@gmail.com
             </a>
             <a href="https://wa.me/255748920929" className="contact-chip">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               +255 748 920 929
             </a>
             <a href="#" className="contact-chip">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               Arusha, Tanzania
             </a>
           </div>
