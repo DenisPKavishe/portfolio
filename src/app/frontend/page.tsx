@@ -14,7 +14,7 @@ export default function FrontendPage() {
   const [mounted, setMounted] = useState(false)
   const accentColor = '#6B1D2B'
   const email = 'kavishedenis55@gmail.com'
-  const phone = '+255748920929'
+  const phone = '+255746965913'
   const location = 'Arusha, Tanzania'
 
   useEffect(() => {
@@ -261,7 +261,7 @@ export default function FrontendPage() {
         role="Frontend Developer"
         description="Passionate Frontend Developer with strong foundation in React, Next.js, and modern web technologies. Building responsive, user-friendly interfaces from Arusha, Tanzania."
         stats={frontendStats}
-        imageUrl="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&h=500&fit=crop"
+        imageUrl="/denis.PNG"
         accentColor={accentColor}
       />
 

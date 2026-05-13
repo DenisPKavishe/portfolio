@@ -261,7 +261,7 @@ export default function BackendPage() {
         role="Python Backend Developer"
         description="Scalable APIs, asynchronous task queues, optimized database queries, and high-performance backend systems. Specializing in Django, DRF, Celery, and Redis."
         stats={backendStats}
-        imageUrl="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=500&h=500&fit=crop"
+        imageUrl= '/denis.PNG'
         accentColor={accentColor}
       />
 

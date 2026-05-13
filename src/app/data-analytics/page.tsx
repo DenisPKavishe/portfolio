@@ -15,7 +15,7 @@ export default function DataAnalyticsPage() {
   const [showCertifications, setShowCertifications] = useState(false)
   const accentColor = '#059669'
   const email = 'kavishedenis55@gmail.com'
-  const phone = '+255748920929'
+  const phone = '+255746965913'
   const location = 'Arusha, Tanzania'
 
   useEffect(() => {
@@ -388,7 +388,7 @@ export default function DataAnalyticsPage() {
         role="Data Analytics Expert"
         description="Turning raw data into actionable insights using Excel, Python, SQL, and modern visualization tools. Helping businesses make data-driven decisions."
         stats={dataStats}
-        imageUrl="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=500&fit=crop"
+        imageUrl="/denis.PNG"
         accentColor={accentColor}
       />
 
