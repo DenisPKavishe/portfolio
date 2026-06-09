@@ -280,8 +280,8 @@ export default function FrontendPage() {
             <div className="about-quote">"Passionate Frontend Developer with a strong foundation in modern web technologies."</div>
             <div className="about-full-text">Passionate Frontend Developer with a strong foundation in modern web technologies. I specialize in building responsive, user-friendly interfaces that deliver exceptional experiences. My practical training at e-Government Authority (e-GA) and commercial experience at KH MMBAGA and God's Plan Charity have sharpened my ability to deliver high-quality solutions.</div>
             <div className="about-stats-mini">
-              <div className="stat-mini"><div className="stat-mini-number">3+</div><div className="stat-mini-label">Years Exp</div></div>
-              <div className="stat-mini"><div className="stat-mini-number">15+</div><div className="stat-mini-label">Projects</div></div>
+              <div className="stat-mini"><div className="stat-mini-number">1+</div><div className="stat-mini-label">Years Exp</div></div>
+              <div className="stat-mini"><div className="stat-mini-number">5+</div><div className="stat-mini-label">Projects</div></div>
               <div className="stat-mini"><div className="stat-mini-number">100%</div><div className="stat-mini-label">Client Focus</div></div>
             </div>
           </div>
@@ -295,7 +295,12 @@ export default function FrontendPage() {
         </div>
         <div className="tech-grid">
           {frontendTechStack.map((tech, index) => (
-            <TechCard key={index} icon={tech.icon} name={tech.name} accentColor={accentColor} />
+            <TechCard
+              key={index}
+              icon={tech.icon}
+              name={tech.name}
+              accentColor={accentColor}
+            />
           ))}
         </div>
       </section>

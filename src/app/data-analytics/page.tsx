@@ -481,7 +481,6 @@ export default function DataAnalyticsPage() {
                   </svg>
                   {cert.date}
                 </div>
-                <div className="cert-credential">{cert.credentialId}</div>
                 {cert.description && (
                   <p style={{ fontSize: '13px', color: '#6b7280', marginBottom: '12px' }}>{cert.description}</p>
                 )}
@@ -490,7 +489,7 @@ export default function DataAnalyticsPage() {
                     <span key={skill} className="cert-skill">{skill}</span>
                   ))}
                 </div>
-                <a href="#" className="verify-link">
+                <a href="https://www.credly.com/users/denis-kavishe" className="verify-link">
                   Verify Credential 
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <line x1="5" y1="12" x2="19" y2="12"/>

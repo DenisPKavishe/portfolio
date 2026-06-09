@@ -14,7 +14,7 @@ export default function BackendPage() {
   const [mounted, setMounted] = useState(false)
   const accentColor = '#0F4C81'
   const email = 'kavishedenis55@gmail.com'
-  const phone = '+255748920929'
+  const phone = '+255746965913'
   const location = 'Arusha, Tanzania'
 
   useEffect(() => {

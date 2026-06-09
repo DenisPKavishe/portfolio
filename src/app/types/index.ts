@@ -1,5 +1,7 @@
+import { IconType } from "react-icons"
+
 export interface TechItem {
-    icon: string
+    icon: IconType
     name: string
     category?: string
     proficiency?: number
@@ -37,7 +39,7 @@ export interface TechItem {
     title: string
     issuer: string
     date: string
-    credentialId: string
+    credentialId?: string
     skills: string[]
     description?: string
     icon?: string
