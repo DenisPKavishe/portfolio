@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 interface NavbarProps {
-  variant?: 'frontend' | 'backend' | 'data'
+  variant?: 'frontend' | 'backend' | 'data' | 'mobile' | 'graphic'
 }
 
 export default function Navbar({ variant = 'frontend' }: NavbarProps) {
@@ -14,6 +14,8 @@ export default function Navbar({ variant = 'frontend' }: NavbarProps) {
       case 'frontend': return '#6B1D2B'
       case 'backend': return '#0F4C81'
       case 'data': return '#059669'
+      case 'graphic': return '#8B5CF6'
+      case 'mobile': return '#0284C7'
       default: return '#6B1D2B'
     }
   }

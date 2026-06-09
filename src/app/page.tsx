@@ -470,13 +470,13 @@ export default function Home() {
 
       <div className="container">
         <div className="hero">
-          <div className="badge">✦ PORTFOLIO HUB ✦</div>
+          <div className="badge">✦ Denis Kavishe PORTFOLIO ✦</div>
           <h1>Denis <span className="highlight">Kavishe</span><br />Software Developer</h1>
           <p className="hero-desc">Explore my work across frontend engineering, backend architecture, and data analytics. Each portfolio showcases specialized skills, projects, and professional journey.</p>
           <div className="hero-stats">
-            <div className="stat"><div className="stat-number">4+</div><div className="stat-label">Years Exp</div></div>
-            <div className="stat"><div className="stat-number">35+</div><div className="stat-label">Projects</div></div>
-            <div className="stat"><div className="stat-number">3</div><div className="stat-label">Specializations</div></div>
+            <div className="stat"><div className="stat-number">1+</div><div className="stat-label">Years Exp</div></div>
+            <div className="stat"><div className="stat-number">10+</div><div className="stat-label">Projects</div></div>
+            <div className="stat"><div className="stat-number">5</div><div className="stat-label">Specializations</div></div>
           </div>
         </div>
 
@@ -519,6 +519,45 @@ export default function Home() {
               <span className="tech-badge">PostgreSQL</span>
             </div>
             <div className="arrow-link">Explore Backend →</div>
+          </Link>
+
+          <Link href="/mobile" className="role-card card-mobile">
+            <div className="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke="currentColor"/>
+                <line x1="12" y1="18" x2="12.01" y2="18" stroke="currentColor" strokeWidth="2"/>
+                <path d="M9 5h6M9 8h4" stroke="currentColor"/>
+                <circle cx="12" cy="15" r="1.5" stroke="currentColor"/>
+              </svg>
+            </div>
+            <h3>Mobile Development</h3>
+            <p>Cross-platform mobile applications with Flutter and Dart. Building beautiful, performant, and native-like experiences for iOS and Android from a single codebase.</p>
+            <div className="tech-badges">
+              <span className="tech-badge">Flutter</span>
+              <span className="tech-badge">Dart</span>
+              <span className="tech-badge">Firebase</span>
+              <span className="tech-badge">RESTful APIs</span>
+              <span className="tech-badge">Provider</span>
+            </div>
+            <div className="arrow-link">Explore Mobile →</div>
+          </Link>
+
+          <Link href="/design" className="role-card card-design">
+            <div className="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor"/>
+                <circle cx="12" cy="12" r="3" stroke="currentColor"/>
+              </svg>
+            </div>
+            <h3>Graphic Design</h3>
+            <p>Creative visual designs, branding, logo design, social media graphics, and print materials. Transforming ideas into stunning visuals.</p>
+            <div className="tech-badges">
+              <span className="tech-badge">Adobe Photoshop</span>
+              <span className="tech-badge">Adobe Illustrator</span>
+              <span className="tech-badge">Figma</span>
+              <span className="tech-badge">Canva</span>
+            </div>
+            <div className="arrow-link">Explore Design →</div>
           </Link>
 
           <Link href="/data-analytics" className="role-card card-data">

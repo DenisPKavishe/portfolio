@@ -15,9 +15,6 @@ import { TbApi, TbLock } from "react-icons/tb"
 import { IconType } from "react-icons"
 
 
-// ==========================================
-// 1. TECH STACK SECTION
-// ==========================================
 export const backendTechStack: TechItem[] = [
   { icon: SiPython as IconType, name: "Python" },
   { icon: SiDjango as IconType, name: "Django / DRF" },
@@ -32,13 +29,10 @@ export const backendTechStack: TechItem[] = [
 ]
 
 
-// ==========================================
-// 2. PROJECTS SECTION
-// ==========================================
 export const backendProjects: Project[] = [
   {
     id: 1,
-    image: "/projects/BizsmartBackend.png",
+    image: "/projects/BizSmartFrontend.png",
     tag: "Django • Celery • Redis • REST API",
     title: "BizSmart ERP & Cashflow Management Engine",
     desc: "An enterprise-grade financial backend designed for high-throughput transactional consistency. Engineered with secure JWT authentication, optimized multi-tenant PostgreSQL queries, and an asynchronous processing layer powered by Celery and Redis to handle 2,000+ concurrent user sessions reliably.",
@@ -66,9 +60,6 @@ export const backendProjects: Project[] = [
 ]
 
 
-// ==========================================
-// 3. EXPERIENCE SECTION
-// ==========================================
 export const backendExperience: Experience[] = [
   {
     year: "Feb–Apr 2026",
@@ -85,9 +76,6 @@ export const backendExperience: Experience[] = [
 ]
 
 
-// ==========================================
-// 4. EDUCATION SECTION
-// ==========================================
 export const backendEducation: Education[] = [
   {
     year: "2023–2026",

@@ -2,7 +2,7 @@
 import Link from 'next/link'
 
 interface FooterProps {
-  variant?: 'frontend' | 'backend' | 'data'
+  variant?: 'frontend' | 'backend' | 'data' | 'mobile' | 'graphic'
 }
 
 export default function Footer({ variant = 'frontend' }: FooterProps) {
@@ -11,6 +11,8 @@ export default function Footer({ variant = 'frontend' }: FooterProps) {
       case 'frontend': return '#6B1D2B'
       case 'backend': return '#0F4C81'
       case 'data': return '#059669'
+      case 'mobile': return '#0284C7'
+      case 'graphic': return '#8B5CF6'
       default: return '#6B1D2B'
     }
   }
@@ -43,7 +45,7 @@ export default function Footer({ variant = 'frontend' }: FooterProps) {
                   <polyline points="22,6 12,13 2,6"/>
                 </svg>
               </a>
-              <a href="https://wa.me/255748920929">
+              <a href="https://wa.me/255746965913">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24z"/>
                 </svg>

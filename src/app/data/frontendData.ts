@@ -55,7 +55,7 @@ export const frontendProjects: Project[] = [
   },
   {
     id: 4,
-    image: "/projects/bizsmartFrontend.png",
+    image: "/projects/BizSmartFrontend.png",
     tag: "Next.js • Dashboard UI",
     title: "BizSmart Frontend Dashboard",
     desc: "Business dashboard interface with dynamic components, optimized state management, and clean UI for financial and operational data visualization.",
