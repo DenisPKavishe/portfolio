@@ -12,10 +12,19 @@ import { designTechStack, designProjects, designExperience, designEducation, des
 export default function DesignPage() {
   const [mounted, setMounted] = useState(false)
   const [selectedImage, setSelectedImage] = useState<{ src: string; title: string; category: string } | null>(null)
+  const [activeCategory, setActiveCategory] = useState<string>('all')
   const accentColor = '#8B5CF6'
   const email = 'kavishedenis55@gmail.com'
   const phone = '+255746965913'
   const location = 'Arusha, Tanzania'
+
+  // Get unique categories from projects
+  const categories = ['all', ...new Set(designProjects.map(p => p.category))]
+
+  // Filter projects based on active category
+  const filteredProjects = activeCategory === 'all' 
+    ? designProjects 
+    : designProjects.filter(p => p.category === activeCategory)
 
   useEffect(() => {
     setMounted(true)
@@ -40,7 +49,7 @@ export default function DesignPage() {
     handleScroll() // Initial check
     
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [mounted])
+  }, [mounted, activeCategory]) // Re-run when category changes
 
   // Close modal on escape key
   useEffect(() => {
@@ -147,6 +156,38 @@ export default function DesignPage() {
           color: #1f2937;
         }
         
+        /* Filter Buttons */
+        .filter-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px;
+          margin: 32px 0 48px;
+        }
+        .filter-btn {
+          padding: 10px 28px;
+          border-radius: 60px;
+          border: 2px solid #e5e7eb;
+          background: white;
+          color: #6b7280;
+          font-weight: 600;
+          font-size: 14px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-transform: capitalize;
+        }
+        .filter-btn:hover {
+          border-color: ${accentColor};
+          color: ${accentColor};
+          transform: translateY(-2px);
+        }
+        .filter-btn.active {
+          background: ${accentColor};
+          color: white;
+          border-color: ${accentColor};
+          box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.3);
+        }
+        
         /* Tech Stack Cards */
         .tech-grid {
           display: grid;
@@ -230,6 +271,24 @@ export default function DesignPage() {
           text-transform: uppercase;
           letter-spacing: 1px;
         }
+        .design-info .category-badge {
+          display: inline-block;
+          padding: 4px 14px;
+          border-radius: 60px;
+          background: ${accentColor}15;
+          color: ${accentColor};
+          font-size: 11px;
+          font-weight: 600;
+          text-transform: capitalize;
+          margin-top: 6px;
+        }
+        
+        /* Category count badge */
+        .category-count {
+          font-size: 12px;
+          opacity: 0.7;
+          margin-left: 6px;
+        }
         
         /* Modal Styles */
         .modal-overlay {
@@ -283,6 +342,7 @@ export default function DesignPage() {
           font-size: 14px;
           color: ${accentColor};
           font-weight: 600;
+          text-transform: capitalize;
         }
         .modal-close {
           position: absolute;
@@ -470,6 +530,10 @@ export default function DesignPage() {
           .modal-info h3 {
             font-size: 16px;
           }
+          .filter-btn {
+            padding: 8px 20px;
+            font-size: 13px;
+          }
         }
         @media (max-width: 480px) {
           .section, .section-alt {
@@ -490,6 +554,13 @@ export default function DesignPage() {
             width: 32px;
             height: 32px;
             font-size: 18px;
+          }
+          .filter-container {
+            gap: 8px;
+          }
+          .filter-btn {
+            padding: 6px 16px;
+            font-size: 12px;
           }
         }
       `}</style>
@@ -544,7 +615,7 @@ export default function DesignPage() {
         </div>
       </section>
 
-      {/* Design Gallery Section - Grid of Images with Modal */}
+      {/* Design Gallery Section - Grid of Images with Modal and Filtering */}
       <section className="section-alt" id="gallery">
         <div className="section-alt-inner">
           <div className="section-header">
@@ -552,8 +623,30 @@ export default function DesignPage() {
             <h2 className="section-title">Design Gallery</h2>
             <p style={{ color: '#6b7280', marginTop: '8px' }}>Click on any image to view full size</p>
           </div>
+          
+          {/* Category Filter Buttons */}
+          <div className="filter-container">
+            {categories.map((category) => {
+              // Count projects in this category
+              const count = category === 'all' 
+                ? designProjects.length 
+                : designProjects.filter(p => p.category === category).length
+              
+              return (
+                <button
+                  key={category}
+                  className={`filter-btn ${activeCategory === category ? 'active' : ''}`}
+                  onClick={() => setActiveCategory(category)}
+                >
+                  {category}
+                  <span className="category-count">({count})</span>
+                </button>
+              )
+            })}
+          </div>
+
           <div className="design-gallery">
-            {designProjects.map((project, index) => (
+            {filteredProjects.map((project, index) => (
               <div 
                 key={index} 
                 className="design-gallery-item animate-on-scroll"
@@ -571,11 +664,21 @@ export default function DesignPage() {
                 </div>
                 <div className="design-info">
                   <h4>{project.title}</h4>
-                  <p>{project.category}</p>
+                  <span className="category-badge">Click to View</span>
                 </div>
               </div>
             ))}
           </div>
+
+          {filteredProjects.length === 0 && (
+            <div style={{ 
+              textAlign: 'center', 
+              padding: '60px 20px',
+              color: '#6b7280'
+            }}>
+              <p style={{ fontSize: '18px' }}>No projects found in this category.</p>
+            </div>
+          )}
         </div>
       </section>
 
