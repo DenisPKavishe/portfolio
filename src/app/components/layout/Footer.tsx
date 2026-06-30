@@ -65,7 +65,7 @@ export default function Footer({ variant = 'frontend' }: FooterProps) {
           <div className="footer-links">
             <h4>Resources</h4>
             <ul>
-              <li><a href="#">GitHub</a></li>
+              <li><a href="https://github.com/DenisPKavishe">GitHub</a></li>
               <li><a href="#">LinkedIn</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>

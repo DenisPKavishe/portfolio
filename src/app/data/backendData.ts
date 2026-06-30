@@ -37,6 +37,7 @@ export const backendProjects: Project[] = [
     title: "BizSmart ERP & Cashflow Management Engine",
     desc: "An enterprise-grade financial backend designed for high-throughput transactional consistency. Engineered with secure JWT authentication, optimized multi-tenant PostgreSQL queries, and an asynchronous processing layer powered by Celery and Redis to handle 2,000+ concurrent user sessions reliably.",
     techStack: ["Django REST", "Redis", "Celery", "PostgreSQL", "JWT"],
+    demoUrl: "https://bizsmart-backend-production.up.railway.app/api/docs/",
     githubUrl: "https://github.com/DenisPKavishe/BizSmart-Backend.git"
   },
   {

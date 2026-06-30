@@ -51,15 +51,16 @@ export const frontendProjects: Project[] = [
     desc: "Interactive charity platform with real-time data integration, Supabase backend connectivity, and modern UI for donation tracking and engagement.",
     date: "March 2026",
     demoUrl: "https://godplancharity.vercel.app/",
-    githubUrl: "#"
+    githubUrl: "https://github.com/DenisPKavishe/gpc_v2.git"
   },
   {
     id: 4,
     image: "/projects/BizSmartFrontend.png",
-    tag: "Next.js • Dashboard UI",
+    tag: "Next.js • Typescript • Dashboard UI",
     title: "BizSmart Frontend Dashboard",
     desc: "Business dashboard interface with dynamic components, optimized state management, and clean UI for financial and operational data visualization.",
-    date: "March 2026",
+    date: "June 2026",
+    demoUrl: "https://godplancharity.vercel.app/",
     githubUrl: "https://github.com/DenisPKavishe/BizSmart-Frontend.git"
   }
 ]
