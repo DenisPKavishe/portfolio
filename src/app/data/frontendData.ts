@@ -60,7 +60,7 @@ export const frontendProjects: Project[] = [
     title: "BizSmart Frontend Dashboard",
     desc: "Business dashboard interface with dynamic components, optimized state management, and clean UI for financial and operational data visualization.",
     date: "June 2026",
-    demoUrl: "https://godplancharity.vercel.app/",
+    demoUrl: "https://bizsmart-frontend.vercel.app/",
     githubUrl: "https://github.com/DenisPKavishe/BizSmart-Frontend.git"
   }
 ]
