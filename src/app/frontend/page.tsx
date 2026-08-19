@@ -261,7 +261,7 @@ export default function FrontendPage() {
         role="Frontend Developer"
         description="Passionate Frontend Developer with strong foundation in React, Next.js, and modern web technologies. Building responsive, user-friendly interfaces from Arusha, Tanzania."
         stats={frontendStats}
-        imageUrl="/denis.PNG"
+        imageUrl="/denis.jpeg"
         accentColor={accentColor}
       />
 

@@ -261,7 +261,7 @@ export default function MobilePage() {
         role="Mobile Developer (Flutter)"
         description="Passionate Mobile Developer specializing in Flutter and Dart. Building cross-platform, beautiful, and performant mobile applications for iOS and Android from a single codebase. Based in Arusha, Tanzania."
         stats={mobileStats}
-        imageUrl="/denis.PNG"
+        imageUrl="/denis.jpeg"
         accentColor={accentColor}
       />
 

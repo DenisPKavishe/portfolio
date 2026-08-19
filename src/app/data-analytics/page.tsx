@@ -388,7 +388,7 @@ export default function DataAnalyticsPage() {
         role="Data Analytics Expert"
         description="Turning raw data into actionable insights using Excel, Python, SQL, and modern visualization tools. Helping businesses make data-driven decisions."
         stats={dataStats}
-        imageUrl="/denis.PNG"
+        imageUrl="/denis.jpeg"
         accentColor={accentColor}
       />
 

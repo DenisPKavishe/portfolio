@@ -574,7 +574,7 @@ export default function DesignPage() {
         role="Graphic Designer"
         description="Creative Graphic Designer specializing in brand identity, logo design, social media graphics, and print materials. Transforming ideas into stunning visual stories that captivate and communicate."
         stats={designStats}
-        imageUrl="/denis.PNG"
+        imageUrl="/denis.jpeg"
         accentColor={accentColor}
       />
 
